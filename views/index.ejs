@@ -1,29 +1,63 @@
-<form class="form-group" action="/carbclc" method="POST">
-    <h2 class="made-tommy-soft-bold">Carbon Calculator</h2>
-    <%- include('./partials/messages.ejs') %>
+<div class="calculator-container">
 
-    <input class="form-control" list ="liststationfrom"  name="from" placeholder="from" id="from" value="<%= typeof from != 'undefined' ? from : '' %>" required />
+
+  <form class="form-group" action="/carbclc" method="POST">
+    <h1 class="made-tommy-soft-bold">Carbon Calculator</h1>
+    <h5 class="made-tommy-soft-bold">Calculate your carbon offset!</h5>
+    <%- include('./partials/messages.ejs') %>
+    <br>
+    <input class="form-control station-input-from" list="liststationfrom" name="from" placeholder="From" id="from" value="<%= typeof from != 'undefined' ? from : '' %>" required />
     <datalist id="liststationfrom">
       <% liststations.forEach((a,i) => { i++ %>
-        <option value="<%= a.name %>"></option>
-        <% }) %>
+      <option value="<%= a.name %>"></option>
+      <% }) %>
     </datalist>
-    
 
-    <input class="form-control" list ="liststationto"  name="to" placeholder="to" id="to" value="<%= typeof to != 'undefined' ? to : '' %>" required />
-            <datalist id="liststationto">
-              <% liststations.forEach((a,i) => { i++ %>
-                <option value="<%= a.name %>"></option>
-                <% }) %>
-            </datalist>
-    <button type="submit" class="btn btn-dark">Check</button>
+
+    <input class="form-control station-input-to" list="liststationto" name="to" placeholder="To" id="to" value="<%= typeof to != 'undefined' ? to : '' %>" required />
+    <datalist id="liststationto">
+      <% liststations.forEach((a,i) => { i++ %>
+      <option value="<%= a.name %>"></option>
+      <% }) %>
+    </datalist>
+
+    <button type="submit" class="btn btn-success w-100 check-button">Check</button>
   </form>
-  <p>Distance = <%= dist %> km</p>
-  <p>kgcarbon/km = </p>
-  <p>kg Carbon = <%= carbonkg %> kg</p>
-  <p>Price/kg carbon = Rp30,-</p>
-  <p>Price = Rp <%= pricecarbon %> </p>
-  
 
-<a href="/inputsta"><button> stasion </button></a>
-<a href="/inputtrans"><button> transition </button></a>
+
+  <table class="information-table">
+    <tbody>
+      <tr>
+        <td>Distance</td>
+        <td>=</td>
+        <td><%= dist %> km</td>
+      </tr>
+      <tr>
+        <td>kg Carbon/km</td>
+        <td>=</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>kg Carbon</td>
+        <td>=</td>
+        <td> <%= carbonkg %> kg</td>
+      </tr>
+      <tr>
+        <td>Price/kg Carbon</td>
+        <td>=</td>
+        <td> Rp30,-</td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td>=</td>
+        <td> Rp <%= pricecarbon %> </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a href="/inputsta"><button class="btn btn-warning input-button w-100"> Station </button></a>
+  <a href="/inputtrans"><button class="btn btn-warning input-button w-100"> Transition </button></a>
+
+
+</div>

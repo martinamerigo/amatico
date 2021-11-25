@@ -1,0 +1,63 @@
+html, body {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.bold {
+  text-decoration: bold;
+}
+
+.calculator-container {
+  padding: 2% 35%;
+  background-color: #3E7C17;
+  height: 100%;
+}
+
+/* Calculator home page */
+.station-input-from {
+  padding: 2rem 2rem;
+  /* margin: 1rem 0; */
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.station-input-to {
+  padding: 2rem 2rem;
+  /* margin: 1rem 0; */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.check-button {
+  margin: 1rem 0;
+  border-radius: 1rem;
+}
+
+.information-table {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border: solid 5px #ffc107;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0 0 0.5rem;
+  font-weight: bold;
+}
+
+.information-table td {
+  height:2rem;
+}
+
+.input-button {
+  margin: 0.5rem 0;
+  border-radius: 1rem;
+}
+
+/* Register station */
