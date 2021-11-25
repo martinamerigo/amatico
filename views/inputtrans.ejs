@@ -1,0 +1,49 @@
+<div class="admin-register-project-div">
+  <a href="/"><button> back </button></a>
+
+    <form class="form-group" action="/inputtrans" method="POST">
+      <h2 class="made-tommy-soft-bold">Register Transition</h2>
+      <%- include('./partials/messages.ejs') %>
+  
+      <input class="form-control" type="number" name="trans" placeholder="trans" id="trans" value="<%= typeof trans != 'undefined' ? trans : '' %>" required />
+  
+      <input class="form-control" type="text" name="from" placeholder="from" id="from" value="<%= typeof from != 'undefined' ? from : '' %>" required />
+  
+      <input class="form-control" type="text" name="to" placeholder="to++" id="to" value="<%= typeof to != 'undefined' ? to : '' %>" required />
+
+      <input class="form-control" type="number" name="distance" placeholder="distance++" id="distance" value="<%= typeof distance != 'undefined' ? distance : '' %>" required />
+
+      <input class="form-control" type="number" name="indicatoroptional" placeholder="indicatoroptional++" id="indicatoroptional" value="<%= typeof indicatoroptional != 'undefined' ? indicatoroptional : '' %>" required />
+  
+      <button type="submit" class="btn btn-dark">Register</button>
+  
+    </form>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Trans</th>
+          <th scope="col">From</th>
+          <th scope="col">To</th>
+          <th scope="col">Dist(km)</th>
+          <th scope="col">Indicator Optional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% listtransitions.forEach((transition,i) => { i++ %>
+        <tr>
+          <th scope="row"><%= i++ %></th>
+          <td><%= transition.trans %> </td>
+          <td><%= transition.from %></td>
+          <td><%= transition.to %></td>
+          <td><%= transition.distance %></td>
+          <td><%= transition.indicatoroptional %></td>
+        </tr>
+        <% }) %>
+  
+      </tbody>
+    </table>
+  
+  </div>
+  

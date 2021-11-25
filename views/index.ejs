@@ -1,0 +1,29 @@
+<form class="form-group" action="/carbclc" method="POST">
+    <h2 class="made-tommy-soft-bold">Carbon Calculator</h2>
+    <%- include('./partials/messages.ejs') %>
+
+    <input class="form-control" list ="liststationfrom"  name="from" placeholder="from" id="from" value="<%= typeof from != 'undefined' ? from : '' %>" required />
+    <datalist id="liststationfrom">
+      <% liststations.forEach((a,i) => { i++ %>
+        <option value="<%= a.name %>"></option>
+        <% }) %>
+    </datalist>
+    
+
+    <input class="form-control" list ="liststationto"  name="to" placeholder="to" id="to" value="<%= typeof to != 'undefined' ? to : '' %>" required />
+            <datalist id="liststationto">
+              <% liststations.forEach((a,i) => { i++ %>
+                <option value="<%= a.name %>"></option>
+                <% }) %>
+            </datalist>
+    <button type="submit" class="btn btn-dark">Check</button>
+  </form>
+  <p>Distance = <%= dist %> km</p>
+  <p>kgcarbon/km = </p>
+  <p>kg Carbon = <%= carbonkg %> kg</p>
+  <p>Price/kg carbon = Rp30,-</p>
+  <p>Price = Rp <%= pricecarbon %> </p>
+  
+
+<a href="/inputsta"><button> stasion </button></a>
+<a href="/inputtrans"><button> transition </button></a>

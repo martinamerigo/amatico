@@ -1,0 +1,40 @@
+<div class="admin-register-project-div">
+  <a href="/"><button> back </button></a>
+    <form class="form-group" action="/inputsta" method="POST">
+      <h2 class="made-tommy-soft-bold">Register Station</h2>
+      <%- include('./partials/messages.ejs') %>
+  
+      <input class="form-control" type="text" name="name" placeholder="Name" id="name" value="<%= typeof name != 'undefined' ? name : '' %>" required />
+  
+      <input class="form-control" type="number" name="routes" placeholder="Routes" id="routes" value="<%= typeof routes != 'undefined' ? routes : '' %>" required />
+  
+      <input class="form-control" type="number" name="sta" placeholder="Sta++" id="sta" value="<%= typeof sta != 'undefined' ? sta : '' %>" required />
+  
+      <button type="submit" class="btn btn-dark">Register</button>
+  
+    </form>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Station</th>
+          <th scope="col">Routes</th>
+          <th scope="col">Sta++</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% liststations.forEach((station,i) => { i++ %>
+        <tr>
+          <th scope="row"><%= i++ %></th>
+          <td><%= station.name %> </td>
+          <td><%= station.routes %></td>
+          <td><%= station.sta %></td>
+        </tr>
+        <% }) %>
+  
+      </tbody>
+    </table>
+  
+  </div>
+  
