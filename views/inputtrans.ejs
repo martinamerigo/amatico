@@ -11,9 +11,12 @@
   
       <input class="form-control" type="text" name="to" placeholder="to++" id="to" value="<%= typeof to != 'undefined' ? to : '' %>" required />
 
-      <input class="form-control" type="number" name="distance" placeholder="distance++" id="distance" value="<%= typeof distance != 'undefined' ? distance : '' %>" required />
+      <input class="form-control" type="number" name="distance" placeholder="distance++" id="distance" value="<%= typeof distance != 'undefined' ? distance : '' %>" min="0" step="any"  pattern="^\d+(?:\.\d{1,2})?$" onblur="
+      this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'" required />
 
-      <input class="form-control" type="number" name="indicatoroptional" placeholder="indicatoroptional++" id="indicatoroptional" value="<%= typeof indicatoroptional != 'undefined' ? indicatoroptional : '' %>" required />
+      <input class="form-control" type="number" name="indicatoroptional1" placeholder="indicatoroptional++" id="indicatoroptional1" value="<%= typeof indicatoroptional1 != 'undefined' ? indicatoroptional1 : '' %>" required />
+
+      <input class="form-control" type="number" name="indicatoroptional2" placeholder="indicatoroptional++" id="indicatoroptional2" value="<%= typeof indicatoroptional2 != 'undefined' ? indicatoroptional2 : '' %>" required />
   
       <button type="submit" class="btn btn-dark">Register</button>
   
@@ -38,7 +41,8 @@
           <td><%= transition.from %></td>
           <td><%= transition.to %></td>
           <td><%= transition.distance %></td>
-          <td><%= transition.indicatoroptional %></td>
+          <td><%= transition.indicatoroptional1 %></td>
+          <td><%= transition.indicatoroptional2 %></td>
         </tr>
         <% }) %>
   

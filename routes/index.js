@@ -14,6 +14,9 @@ const {
   calculateprice
 } = require('../routes/function.js');
 
+var kgcarbonperkm = 0.0355;
+var rpperkgcarbon=30;
+
 router.get('/', async (req, res) => {
   // const newTraction = new Traction({
   //   traction: '1'
@@ -23,11 +26,17 @@ router.get('/', async (req, res) => {
   var dist ;
   var carbonkg;
   var pricecarbon;
+  var from;
+  var to;
   res.render('index',{
     pricecarbon,
     dist,
     liststations,
-    carbonkg
+    carbonkg,
+    kgcarbonperkm,
+    rpperkgcarbon,
+    from,
+    to
   });
 });
 
@@ -83,7 +92,8 @@ router.post('/inputtrans', (req, res) => {
     from,
     to,
     distance,
-    indicatoroptional
+    indicatoroptional1,
+    indicatoroptional2
   } = req.body;
   let errors = [];
   const newTrans = new Transition({
@@ -91,7 +101,8 @@ router.post('/inputtrans', (req, res) => {
     from,
     to,
     distance,
-    indicatoroptional
+    indicatoroptional1,
+    indicatoroptional2
     });
 
     newTrans.save()
@@ -117,6 +128,8 @@ router.post('/carbclc', async (req, res) => {
       var dist ;
       var carbonkg;
       var pricecarbon;
+      // var from;
+      // var to;
       // User exists
       errors.push({
         msg: "Station is not registered"
@@ -126,7 +139,11 @@ router.post('/carbclc', async (req, res) => {
         dist,
         carbonkg,
         pricecarbon,
-        liststations
+        liststations,
+        kgcarbonperkm,
+        rpperkgcarbon,
+        from,
+        to
       });
     }});
 
@@ -138,6 +155,8 @@ router.post('/carbclc', async (req, res) => {
           var dist ;
           var carbonkg;
           var pricecarbon;
+          // var from;
+          // var to;
           // User exists
           errors.push({
             msg: "Station is not registered"
@@ -147,19 +166,27 @@ router.post('/carbclc', async (req, res) => {
             dist,
             carbonkg,
             pricecarbon,
-            liststations
+            liststations,
+            kgcarbonperkm,
+            rpperkgcarbon,
+            from,
+            to
           });
         }});
     
 
   var dist = await calculatedistance(from,to);
-  var carbonkg = await calculatecarbon(dist);
-  var pricecarbon = await calculateprice(carbonkg);
+  var carbonkg = await calculatecarbon(dist,kgcarbonperkm);
+  var pricecarbon = await calculateprice(carbonkg,rpperkgcarbon);
   res.render('index',{
     dist,
     carbonkg,
     pricecarbon,
-    liststations
+    liststations,
+    kgcarbonperkm,
+    rpperkgcarbon,
+    from,
+    to
   });
   console.log(errors)
 });

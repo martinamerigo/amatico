@@ -28,6 +28,11 @@
   <table class="information-table">
     <tbody>
       <tr>
+        <td>From <%= from %></td>
+        <td> - </td>
+        <td>to <%= to %></td>
+      </tr>
+      <tr>
         <td>Distance</td>
         <td>=</td>
         <td><%= dist %> km</td>
@@ -35,7 +40,7 @@
       <tr>
         <td>kg Carbon/km</td>
         <td>=</td>
-        <td></td>
+        <td><%= kgcarbonperkm %></td>
       </tr>
       <tr>
         <td>kg Carbon</td>
@@ -45,7 +50,7 @@
       <tr>
         <td>Price/kg Carbon</td>
         <td>=</td>
-        <td> Rp30,-</td>
+        <td> Rp<%= rpperkgcarbon %>,-</td>
       </tr>
       <tr>
         <td>Price</td>
@@ -55,9 +60,9 @@
     </tbody>
   </table>
 
-
+<!-- 
   <a href="/inputsta"><button class="btn btn-warning input-button w-100"> Station </button></a>
-  <a href="/inputtrans"><button class="btn btn-warning input-button w-100"> Transition </button></a>
+  <a href="/inputtrans"><button class="btn btn-warning input-button w-100"> Transition </button></a> -->
 
 
 </div>

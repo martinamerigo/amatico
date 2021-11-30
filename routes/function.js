@@ -20,6 +20,7 @@ const calculatedistance = async (a,b) => {
     var stato = statoobject.sta;
 
     let jarak=[];
+    let jarakjarak = [];
     
     //if rute from = rute too, jarak0 = sta to-sta from
     if(rutefrom===ruteto){
@@ -30,10 +31,10 @@ const calculatedistance = async (a,b) => {
         //const max rute
         const rutemin = Math.min(rutefrom,ruteto);
         const rutemax = Math.max(rutefrom,ruteto);
-        const transisistring = num.toString(rutemin)+num.toString(rutemin);
+        const transisistring = rutemin.toString()+rutemax.toString();
         const transisinum = Number(transisistring);
 
-        const transisiobject = await Transisi.findOne({
+        const transisiobject = await Transition.findOne({
             trans:transisinum,
             indicatoroptional1:1
         });
@@ -62,10 +63,10 @@ const calculatedistance = async (a,b) => {
 
         let jarakopti1 = jarak1+jarak2+jarak3;
 
-        if(indicatoropti2===1){
-            const transisiobjectopti2 = await Transisi.findOne({
+        if(indicatoropti2===2){
+            const transisiobjectopti2 = await Transition.findOne({
                 trans:transisinum,
-                indicatoroptional2:2
+                indicatoroptional1:2
             });
             const statransisi2from = transisiobjectopti2.sta;
             const statransisi2to = transisiobjectopti2.sta;
@@ -73,13 +74,18 @@ const calculatedistance = async (a,b) => {
             let jarak5 = Math.abs(statransisi2from-stafrom);
             let jarak6 = Math.abs(statransisi2to-stato);
             let jarakopti2=jarak5+jarak6+jarak7;
+            jarakjarak.push(jarakopti2);
         } else {
             let jarakopti2=1000000000;
+            jarakjarak.push(jarakopti2);
         }
+        let jarakopti2 = Math.abs(jarakjarak[0]);
         let jarak0 = Math.min(jarakopti1,jarakopti2);
+        jarak.push(jarak0);
     };
     let jarak0 = Math.abs(jarak[0]);
     console.log('cekjarak0 '+jarak0);
+    let jarakjarakjarak = (Math.round(jarak0 * 100) / 100).toFixed(2);
 
 
     //const transisi = min&max
@@ -102,16 +108,16 @@ const calculatedistance = async (a,b) => {
     //check min (jarak 1 + 2 + 3),(jarak 5+6+7)
 
     
-    return jarak0;
+    return jarakjarakjarak;
 };
 
-const calculatecarbon = async (a) => {
-    var carbonkg=1;
+const calculatecarbon = async (a,b) => {
+    let carbonkg = (Math.round(a*b * 100) / 100).toFixed(2);
     return carbonkg;
 };
 
-const calculateprice = async (a) => {
-    var price=1;
+const calculateprice = async (a,b) => {
+    let price = (Math.round(a*b * 100) / 100).toFixed(2);
     return price;
 };
 

@@ -7,9 +7,10 @@
 
     <input class="form-control" type="text" name="name" placeholder="Name" id="name" value="<%= typeof name != 'undefined' ? name : '' %>" required />
 
-    <input class="form-control" type="number" name="routes" placeholder="Routes" id="routes" value="<%= typeof routes != 'undefined' ? routes : '' %>" required />
+    <input class="form-control" type="number" name="routes" placeholder="Routes" id="routes" value="<%= typeof routes != 'undefined' ? routes : '' %>"  required />
 
-    <input class="form-control" type="number" name="sta" placeholder="Sta++" id="sta" value="<%= typeof sta != 'undefined' ? sta : '' %>" required />
+    <input class="form-control" type="number" name="sta" placeholder="Sta++" id="sta" value="<%= typeof sta != 'undefined' ? sta : '' %>" min="0" step="any"  pattern="^\d+(?:\.\d{1,2})?$" onblur="
+    this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'" required />
 
     <button type="submit" class="btn btn-dark">Register</button>
 

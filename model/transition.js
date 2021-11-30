@@ -11,7 +11,7 @@ const transitionschema = new mongoose.Schema({
         required:true, 
     },
     "to": {
-        type: Number,
+        type: String,
         required:true, 
     },
     "distance": {
@@ -30,8 +30,8 @@ const transitionschema = new mongoose.Schema({
     }
 })
 
-//10 -> gaada opsi
-//11 -> ada opsi, opsi pertama
+//11 -> gaada opsi
+//12 -> ada opsi, opsi pertama
 //22 -> opsi kedua
 const Transition = mongoose.model ('transition',transitionschema)
 console.log('database transition connected');
